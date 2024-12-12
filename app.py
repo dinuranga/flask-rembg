@@ -5,7 +5,7 @@ app = FastAPI()
 
 ISS_API_URL = "http://api.open-notify.org/iss-now.json"
 
-@app.get("/iss-location")
+@app.get("/")
 async def get_iss_location():
     try:
         async with httpx.AsyncClient() as client:

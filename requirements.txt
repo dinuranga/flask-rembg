@@ -1,3 +1,0 @@
-flask
-rembg
-onnxruntime

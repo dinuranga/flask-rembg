@@ -13,8 +13,12 @@ async def get_iss_location():
             response.raise_for_status()
             data = response.json()
 
-        timestamp = data.get("timestamp")
+        # Validate the response structure
+        if data.get("message") != "success":
+            raise HTTPException(status_code=500, detail="API did not return success message")
+
         iss_position = data.get("iss_position")
+        timestamp = data.get("timestamp")
 
         if not timestamp or not iss_position:
             raise HTTPException(status_code=500, detail="Invalid API response")
